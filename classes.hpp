@@ -1,30 +1,26 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-namespace mt
+namespace myClasses
 {
-    class Circle
-    {
+    class Rectangle{
     public:
-        Circle(int x, int y, float r, float velocity);
+        Rectangle(int x, int y, int m_w, int m_h, float velocity);
 
-        ~Circle();
+        ~Rectangle();
 
-        sf::CircleShape* Get();
+        sf::RectangleShape* Get();
 
         void Move();
 
-        void SetY(int y);
+        int GetX();
 
-        int GetY();
-
-        void SetVelocity(int velocity);
+        void Stop();
 
     private:
-        int m_x, m_y;
-        float m_r;
+        int m_x, m_y, m_w, m_h;
         float m_velocity;
-        sf::CircleShape* m_shape;
+        sf::RectangleShape* m_rectangle;
     };
 
 }

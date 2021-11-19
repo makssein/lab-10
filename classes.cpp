@@ -1,41 +1,31 @@
 #include "classes.hpp"
 
-namespace mt
-{
-    Circle::Circle(int x, int y, float r, float velocity)
-    {
+namespace myClasses{
+    Rectangle::Rectangle(int x, int y, int w, int h, float velocity){
         m_x = x;
         m_y = y;
-        m_r = r;
+        m_w = w;
+        m_h = h;
         m_velocity = velocity;
-        m_shape = new sf::CircleShape(m_r);
-        m_shape->setOrigin(m_r, m_r);
-        m_shape->setFillColor(sf::Color::White);
-        m_shape->setPosition(m_x, m_y);
+        m_rectangle = new sf::RectangleShape(sf::Vector2f(m_w, m_h));
+        m_rectangle->setOrigin(m_w/2, 0);
+        m_rectangle->setFillColor(sf::Color::Green);
+        m_rectangle->setPosition(m_x, m_y);
     }
-    Circle::~Circle()
-    {
-        delete m_shape;
-    }
-
-    sf::CircleShape* Circle::Get() { return m_shape; }
-
-    void Circle::Move()
-    {
-        m_y += m_velocity;
-        m_shape->setPosition(m_x, m_y);
+    Rectangle::~Rectangle(){
+        delete m_rectangle;
     }
 
-    void Circle::SetY(int y)
-    {
-        m_y = y;
-        m_shape->setPosition(m_x, m_y);
+    sf::RectangleShape* Rectangle::Get() { return m_rectangle; }
+
+    void Rectangle::Move(){
+        m_x += m_velocity;
+        m_rectangle->setPosition(m_x, m_y);
     }
 
-    int Circle::GetY() { return m_y; }
+    int Rectangle::GetX() { return m_x; }
 
-    void Circle::SetVelocity(int velocity)
-    {
-        m_velocity = velocity;
+    void Rectangle::Stop(){
+        m_rectangle->setPosition(1920,m_y);
     }
 }
